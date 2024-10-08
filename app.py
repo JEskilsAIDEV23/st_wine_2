@@ -41,21 +41,21 @@ def match_qwords(description, q_words):
         word_matches.append(1 if word in text else 0)
     return word_matches
 
-def pick_reviews():
-    wine = pd.read_csv('winemag-data_first150k.csv', index_col=0)
-    wine['country'] = wine['country'].astype('category')
-    wine['description'] = wine['description'].astype('string')
-    wine['variety'] = wine['variety'].astype('category')
-    wine['winery'] = wine['winery'].astype('category')
-    wine = wine.drop(columns=["province", "region_1", "region_2", "designation"])
-    wine = wine.dropna(subset=["country"])
-    wine = wine.drop_duplicates(keep='first')
-    wine = wine.dropna(subset=['price'])
-    wine.reset_index(drop=True, inplace=True)
-    reviews = wine[['variety', 'description']]
-    return reviews
+# def pick_reviews():
+#     wine = pd.read_csv('winemag-data_first150k.csv', index_col=0)
+#     wine['country'] = wine['country'].astype('category')
+#     wine['description'] = wine['description'].astype('string')
+#     wine['variety'] = wine['variety'].astype('category')
+#     wine['winery'] = wine['winery'].astype('category')
+#     wine = wine.drop(columns=["province", "region_1", "region_2", "designation"])
+#     wine = wine.dropna(subset=["country"])
+#     wine = wine.drop_duplicates(keep='first')
+#     wine = wine.dropna(subset=['price'])
+#     wine.reset_index(drop=True, inplace=True)
+#     reviews = wine[['variety', 'description']]
+#     return reviews
 
-df_reviews = pick_reviews()
+# df_reviews = pick_reviews()
 
 # Textinmatningsfält
 user_input = st.text_area(f"*Add Review:*")
